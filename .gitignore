@@ -1,0 +1,30 @@
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# IDE
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Logs
+*.log
+
+# Spring Boot
+HELP.md
+target/
+
+# Firebase service account key - DO NOT commit this!
+src/main/resources/firebase-service-account.json
+build/resources/main/firebase-service-account.json

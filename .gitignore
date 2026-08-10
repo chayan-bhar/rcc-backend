@@ -25,6 +25,7 @@ out/
 HELP.md
 target/
 
-# Firebase service account key - DO NOT commit this!
-src/main/resources/firebase-service-account.json
-build/resources/main/firebase-service-account.json
+
+
+# Environment variables - DO NOT commit this!
+.env

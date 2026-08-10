@@ -73,8 +73,8 @@ public class ReceiptService {
             
             addTableRow(table, "Donation Amount:", "INR " + String.format("%.2f", donation.getAmount()), labelFont, valueFont);
             addTableRow(table, "Payment status:", donation.getStatus(), labelFont, valueFont);
-            addTableRow(table, "Razorpay Order ID:", donation.getOrderId() != null ? donation.getOrderId() : "Mock-Order", labelFont, valueFont);
-            addTableRow(table, "Razorpay Payment ID:", donation.getPaymentId() != null ? donation.getPaymentId() : "Mock-Payment", labelFont, valueFont);
+            addTableRow(table, "Order ID:", donation.getOrderId() != null ? donation.getOrderId() : "N/A", labelFont, valueFont);
+            addTableRow(table, "Payment ID:", donation.getPaymentId() != null ? donation.getPaymentId() : "N/A", labelFont, valueFont);
 
             document.add(table);
 

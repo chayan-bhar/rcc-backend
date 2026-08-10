@@ -1,21 +1,10 @@
 server:
-  port: 8080
+  port: ${PORT:8080}
 
 spring:
   application:
     name: ngo-app
   data:
     mongodb:
-      uri: "mongodb+srv://chayanbhar100iiest_db_user:CPXn2kQVBcDNUGoy@rcc-cluster.mxsgdvk.mongodb.net/?appName=RCC-CLUSTER"         # Set this in your .env file
-      database: "RCCDB"  # Set this in your .env file
-
-# NGO Application Properties
-app:
-  firebase:
-    # Path to firebase credentials file inside resources folder or external
-    # We will look for serviceAccountKey.json in the classpath or project root
-    config-path: firebase-service-account.json
-  razorpay:
-    # These should be populated with real credentials in production
-    key-id: rzp_test_placeholder_key
-    key-secret: rzp_test_placeholder_secret
+      uri: ${MONGODB_URI}
+      database: ${MONGODB_DATABASE}

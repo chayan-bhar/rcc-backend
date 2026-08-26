@@ -26,6 +26,9 @@ dependencies {
     // OpenPDF
     implementation 'com.github.librepdf:openpdf:1.3.30'
 
+    // Razorpay Java SDK
+    implementation 'com.razorpay:razorpay-java:1.4.5'
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
 }

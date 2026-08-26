@@ -88,6 +88,10 @@ public class DonationController {
 
     @PostMapping("/verify")
     public ResponseEntity<?> verifyPayment(@RequestBody VerifyRequest request) {
+        if (request.getOrderId() == null || request.getPaymentId() == null || request.getSignature() == null
+                || request.getOrderId().isBlank() || request.getPaymentId().isBlank() || request.getSignature().isBlank()) {
+            return ResponseEntity.badRequest().body("Missing required fields: orderId, paymentId, signature");
+        }
         try {
             Donation verifiedDonation = donationService.verifyPayment(
                     request.getOrderId(),
@@ -98,8 +102,14 @@ public class DonationController {
             if ("SUCCESS".equals(verifiedDonation.getStatus())) {
                 return ResponseEntity.ok(verifiedDonation);
             } else {
-                return ResponseEntity.badRequest().body("Signature verification failed or payment failed");
+                return ResponseEntity.badRequest().body("Payment verification failed");
             }
+        } catch (SecurityException e) {
+            log.warn("Signature mismatch for order {}: {}", request.getOrderId(), e.getMessage());
+            return ResponseEntity.badRequest().body("Invalid payment signature");
+        } catch (IllegalArgumentException e) {
+            log.warn("Bad verify request: {}", e.getMessage());
+            return ResponseEntity.badRequest().body(e.getMessage());
         } catch (Exception e) {
             log.error("Error verifying payment: ", e);
             return ResponseEntity.internalServerError().body("Error verifying payment: " + e.getMessage());

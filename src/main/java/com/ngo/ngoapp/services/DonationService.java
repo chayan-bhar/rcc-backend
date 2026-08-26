@@ -40,6 +40,10 @@ public class DonationService {
         this.campaignRepository = campaignRepository;
     }
 
+    public String getRazorpayKeyId() {
+        return razorpayKeyId;
+    }
+
     @Transactional
     public Donation createDonationOrder(Campaign campaign, User user, Double amount, String donorName, String donorEmail) throws RazorpayException {
         // Razorpay requires amount in paise (1 INR = 100 paise), minimum 100 paise (₹1)

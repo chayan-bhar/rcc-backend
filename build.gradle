@@ -37,6 +37,7 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
+
 // Load .env file into bootRun environment
 bootRun {
     def envFile = file("${rootDir}/.env")

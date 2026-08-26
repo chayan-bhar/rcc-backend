@@ -17,6 +17,7 @@ public class Donation {
     private String status = "PENDING";
     private String donorName;
     private String donorEmail;
+    private String userId;           // flat copy of user._id for efficient querying
     private LocalDateTime createdAt = LocalDateTime.now();
 
     @DBRef
@@ -45,6 +46,8 @@ public class Donation {
     public void setDonorName(String donorName) { this.donorName = donorName; }
     public String getDonorEmail() { return donorEmail; }
     public void setDonorEmail(String donorEmail) { this.donorEmail = donorEmail; }
+    public String getUserId() { return userId; }
+    public void setUserId(String userId) { this.userId = userId; }
     public LocalDateTime getCreatedAt() { return createdAt; }
     public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
     public User getUser() { return user; }

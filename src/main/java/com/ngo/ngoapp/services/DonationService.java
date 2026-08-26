@@ -66,6 +66,9 @@ public class DonationService {
         Donation donation = new Donation();
         donation.setCampaign(campaign);
         donation.setUser(user);
+        if (user != null) {
+            donation.setUserId(user.getId()); // flat field for efficient querying
+        }
         donation.setAmount(amount);           // stored as INR
         donation.setDonorName(donorName);
         donation.setDonorEmail(donorEmail);

@@ -79,7 +79,17 @@ public class DonationController {
                     request.getDonorEmail() != null ? request.getDonorEmail() : (principal != null ? principal.getUser().getEmail() : "")
             );
 
-            return ResponseEntity.ok(donation);
+            java.util.Map<String, Object> response = new java.util.HashMap<>();
+            response.put("id", donation.getId());
+            response.put("orderId", donation.getOrderId());
+            response.put("amount", donation.getAmount());
+            response.put("currency", donation.getCurrency());
+            response.put("status", donation.getStatus());
+            response.put("donorName", donation.getDonorName());
+            response.put("donorEmail", donation.getDonorEmail());
+            response.put("keyId", donationService.getRazorpayKeyId());
+
+            return ResponseEntity.ok(response);
         } catch (Exception e) {
             log.error("Error creating donation order: ", e);
             return ResponseEntity.internalServerError().body("Error generating payment order: " + e.getMessage());

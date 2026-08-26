@@ -119,6 +119,7 @@ public class DonationController {
     @GetMapping("/my-donations")
     public ResponseEntity<List<Donation>> getMyDonations(@AuthenticationPrincipal UserPrincipal principal) {
         if (principal == null) return ResponseEntity.status(401).build();
-        return ResponseEntity.ok(donationRepository.findByUserIdOrderByCreatedAtDesc(principal.getUid()));
+        String email = principal.getUser().getEmail();
+        return ResponseEntity.ok(donationRepository.findByDonorEmailOrderByCreatedAtDesc(email));
     }
 }

@@ -8,3 +8,7 @@ spring:
     mongodb:
       uri: ${MONGODB_URI}
       database: ${MONGODB_DATABASE}
+
+razorpay:
+  key-id: ${RAZORPAY_KEY_ID}
+  key-secret: ${RAZORPAY_KEY_SECRET}

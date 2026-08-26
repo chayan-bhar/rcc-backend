@@ -9,6 +9,7 @@ import java.util.Optional;
 @Repository
 public interface DonationRepository extends MongoRepository<Donation, String> {
     List<Donation> findByUserIdOrderByCreatedAtDesc(String userId);
+    List<Donation> findByDonorEmailOrderByCreatedAtDesc(String donorEmail);
     Optional<Donation> findByOrderId(String orderId);
     List<Donation> findByStatus(String status);
 }

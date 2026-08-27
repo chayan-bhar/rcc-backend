@@ -40,6 +40,12 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         if (authHeader != null && authHeader.startsWith("Bearer ")) {
             String token = authHeader.substring(7).trim();
+            if (token.startsWith("\"") && token.endsWith("\"") && token.length() > 2) {
+                token = token.substring(1, token.length() - 1).trim();
+            }
+            if (token.startsWith("Bearer ")) {
+                token = token.substring(7).trim();
+            }
             if (!token.isEmpty()) {
                 try {
                     DecodedJWT jwt = JWT.decode(token);

@@ -17,10 +17,19 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
 public class SecurityConfig {
+
+    private final JwtAuthenticationFilter jwtAuthenticationFilter;
+
+    public SecurityConfig(JwtAuthenticationFilter jwtAuthenticationFilter) {
+        this.jwtAuthenticationFilter = jwtAuthenticationFilter;
+    }
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -29,9 +38,28 @@ public class SecurityConfig {
             .csrf(AbstractHttpConfigurer::disable)
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable))
+            .exceptionHandling(exceptions -> exceptions
+                .authenticationEntryPoint((request, response, authException) -> {
+                    response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                    response.setContentType("application/json");
+                    response.getWriter().write("{\"error\":\"Unauthorized\",\"message\":\"Authentication token is missing or invalid\"}");
+                })
+                .accessDeniedHandler((request, response, accessDeniedException) -> {
+                    response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+                    response.setContentType("application/json");
+                    response.getWriter().write("{\"error\":\"Forbidden\",\"message\":\"Access denied for this resource\"}");
+                })
+            )
             .authorizeHttpRequests(auth -> auth
-                .anyRequest().permitAll()
-            );
+                .requestMatchers(HttpMethod.GET, "/api/campaigns/**").permitAll()
+                .requestMatchers(HttpMethod.POST, "/api/donations/verify").permitAll()
+                .requestMatchers("/api/admin/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.POST, "/api/campaigns/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.PUT, "/api/campaigns/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.DELETE, "/api/campaigns/**").hasRole("ADMIN")
+                .anyRequest().authenticated()
+            )
+            .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }

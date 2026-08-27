@@ -29,7 +29,7 @@ public class DataLoader implements CommandLineRunner {
             c1.setDescription("Provide warm meals, weekly nutrition kits, and emergency food supplies to families in low-income neighborhoods experiencing acute food shortages.");
             c1.setTargetAmount(500000.0);
             c1.setRaisedAmount(120000.0);
-            c1.setImageUrl("https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=800&auto=format&fit=crop");
+            c1.setImageUrl("https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=800&auto=format&fit=crop");
             c1.setCreatedAt(LocalDateTime.now().minusDays(10));
             campaignRepository.save(c1);
 
@@ -38,7 +38,7 @@ public class DataLoader implements CommandLineRunner {
             c2.setDescription("Fund the drilling of community tube-wells, water-purification stations, and distribution pipelines in rural drylands to curb waterborne diseases.");
             c2.setTargetAmount(800000.0);
             c2.setRaisedAmount(450000.0);
-            c2.setImageUrl("https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?q=80&w=800&auto=format&fit=crop");
+            c2.setImageUrl("https://images.unsplash.com/photo-1541252260730-0412e8e2108e?q=80&w=800&auto=format&fit=crop");
             c2.setCreatedAt(LocalDateTime.now().minusDays(8));
             campaignRepository.save(c2);
 
@@ -47,7 +47,7 @@ public class DataLoader implements CommandLineRunner {
             c3.setDescription("Cover annual school fees, uniforms, textbooks, and computer lab access for orphan children and girls from agricultural working communities.");
             c3.setTargetAmount(300000.0);
             c3.setRaisedAmount(95000.0);
-            c3.setImageUrl("https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=800&auto=format&fit=crop");
+            c3.setImageUrl("https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=80&w=800&auto=format&fit=crop");
             c3.setCreatedAt(LocalDateTime.now().minusDays(6));
             campaignRepository.save(c3);
 
@@ -56,7 +56,7 @@ public class DataLoader implements CommandLineRunner {
             c4.setDescription("Organizing regional blood donation camps, mobile health checkup vans, and life-saving medical supplies for rural healthcare centers.");
             c4.setTargetAmount(250000.0);
             c4.setRaisedAmount(85000.0);
-            c4.setImageUrl("https://images.unsplash.com/photo-1615461066841-6116e61058f4?q=80&w=800&auto=format&fit=crop");
+            c4.setImageUrl("https://images.unsplash.com/photo-1579154204601-01588f351e67?q=80&w=800&auto=format&fit=crop");
             c4.setCreatedAt(LocalDateTime.now().minusDays(4));
             campaignRepository.save(c4);
 
@@ -65,7 +65,7 @@ public class DataLoader implements CommandLineRunner {
             c5.setDescription("Providing emergency shelter kits, waterproof tents, blankets, and essential survival gear for families displaced by floods and severe weather.");
             c5.setTargetAmount(600000.0);
             c5.setRaisedAmount(210000.0);
-            c5.setImageUrl("https://images.unsplash.com/photo-1518398046578-8cca57782e17?q=80&w=800&auto=format&fit=crop");
+            c5.setImageUrl("https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?q=80&w=800&auto=format&fit=crop");
             c5.setCreatedAt(LocalDateTime.now().minusDays(2));
             campaignRepository.save(c5);
 
@@ -74,7 +74,7 @@ public class DataLoader implements CommandLineRunner {
             c6.setDescription("Supporting impoverished senior citizens with monthly medical checkups, essential medicines, warm clothes, and nutritious daily meals.");
             c6.setTargetAmount(400000.0);
             c6.setRaisedAmount(150000.0);
-            c6.setImageUrl("https://images.unsplash.com/photo-1581579438747-1dc8d1e377c8?q=80&w=800&auto=format&fit=crop");
+            c6.setImageUrl("https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?q=80&w=800&auto=format&fit=crop");
             c6.setCreatedAt(LocalDateTime.now().minusDays(1));
             campaignRepository.save(c6);
 
